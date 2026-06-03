@@ -1,0 +1,32 @@
+name: EOL Runtime Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run weekly so you catch EOL dates even without code changes
+    - cron: '0 9 * * 1'
+
+jobs:
+  eol-check:
+    name: Check for EOL Runtimes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check runtimes against endoflife.ai
+        uses: endoflife-ai/eol-check-action@v1
+        with:
+          fail-on-eol: true        # Fail the build if any runtime is EOL
+          fail-on-warning: false   # Set to true to fail on approaching EOL too
+          warning-days: 90         # Warn when EOL is within 90 days
+          # api-key: ${{ secrets.EOL_API_KEY }}  # Optional Pro key for higher rate limits
+
+      # Optional: use the outputs in subsequent steps
+      - name: Report results
+        if: always()
+        run: |
+          echo "EOL runtimes: ${{ steps.eol-check.outputs.eol-count }}"
+          echo "Warning runtimes: ${{ steps.eol-check.outputs.warning-count }}"

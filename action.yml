@@ -1,0 +1,45 @@
+name: 'EOL Runtime Check'
+description: 'Check your runtimes and dependencies against endoflife.ai — fail the build before your stack goes end-of-life.'
+author: 'endoflife.ai'
+
+branding:
+  icon: 'alert-triangle'
+  color: 'orange'
+
+inputs:
+  fail-on-eol:
+    description: 'Fail the build if any runtime is EOL'
+    required: false
+    default: 'true'
+  fail-on-warning:
+    description: 'Fail the build if any runtime is within the warning window'
+    required: false
+    default: 'false'
+  warning-days:
+    description: 'Number of days before EOL to start warning'
+    required: false
+    default: '90'
+  api-key:
+    description: 'endoflife.ai Pro API key (optional — free tier used if not provided)'
+    required: false
+    default: ''
+  paths:
+    description: 'Comma-separated list of paths to scan (defaults to repo root)'
+    required: false
+    default: '.'
+  products:
+    description: 'Additional products to check in format "slug:version,slug:version" (e.g. "nodejs:18,python:3.11")'
+    required: false
+    default: ''
+
+outputs:
+  eol-count:
+    description: 'Number of EOL runtimes found'
+  warning-count:
+    description: 'Number of runtimes approaching EOL'
+  results-json:
+    description: 'Full results as JSON'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
