@@ -2,7 +2,7 @@
 
 **Catch end-of-life runtimes in CI before they become a security incident.**
 
-Powered by [endoflife.ai](https://endoflife.ai) — free EOL intelligence for Node.js, Python, PHP, Ruby, Go, and 450+ more products.
+Powered by [endoflife.ai](https://endoflife.ai) — free EOL intelligence for Node.js, Python, PHP, Ruby, Go, and 480+ more products.
 
 ---
 
