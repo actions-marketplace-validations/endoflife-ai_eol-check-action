@@ -1,5 +1,13 @@
 # EOL Runtime Check — GitHub Action
 
+> **⚠️ Superseded:** this action has been replaced by [**endoflife-ai/eol-check**](https://github.com/endoflife-ai/eol-check) — zero-dependency, broader detection (Dockerfiles, go.mod, engines), EOL Risk Scores in annotations, and an actively maintained listing on the [GitHub Marketplace](https://github.com/marketplace/actions/eol-check-end-of-life-software-gate).
+>
+> Existing workflows using `endoflife-ai/eol-check-action@v1` keep working, but new users should adopt:
+> ```yaml
+> - uses: endoflife-ai/eol-check@v1
+> ```
+
+
 [![Node.js EOL status](https://img.shields.io/endpoint?url=https%3A%2F%2Fendoflife.ai%2Fbadge%2Fnodejs.json)](https://endoflife.ai/nodejs) [![EOL data: endoflife.ai](https://img.shields.io/badge/EOL%20data-endoflife.ai-16a34a)](https://endoflife.ai)
 
 **Catch end-of-life runtimes in CI before they become a security incident.**
