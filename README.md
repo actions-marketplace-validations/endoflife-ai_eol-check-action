@@ -12,7 +12,7 @@
 
 **Catch end-of-life runtimes in CI before they become a security incident.**
 
-Powered by [endoflife.ai](https://endoflife.ai) — free EOL intelligence for Node.js, Python, PHP, Ruby, Go, and 480+ more products.
+Powered by [endoflife.ai](https://endoflife.ai) — EOL intelligence for Node.js, Python, PHP, Ruby, Go, and 500+ products. Free to evaluate; production keys from $79/month.
 
 ---
 
@@ -79,7 +79,7 @@ jobs:
 | `fail-on-eol` | Fail the build if any runtime is EOL | `true` |
 | `fail-on-warning` | Fail the build if any runtime is approaching EOL | `false` |
 | `warning-days` | Days before EOL to start warning | `90` |
-| `api-key` | endoflife.ai Pro API key (higher rate limits) | — |
+| `api-key` | endoflife.ai API key (Starter or Pro: higher daily limit and larger batches) | — |
 | `paths` | Comma-separated paths to scan | `.` |
 | `products` | Additional products to check: `slug:version,slug:version` | — |
 
@@ -120,7 +120,7 @@ jobs:
     warning-days: 180
 ```
 
-**Use Pro API key for higher rate limits:**
+**Use a Starter or Pro API key for higher limits:**
 ```yaml
 - uses: endoflife-ai/eol-check-action@v1
   with:
@@ -137,9 +137,9 @@ Every run writes a full summary table to the GitHub Actions job summary, includi
 
 ## API & rate limits
 
-The free tier allows 100 API requests per day per IP. For most repos this is sufficient. For large monorepos or high-frequency CI, add an endoflife.ai Pro API key via repository secret.
+Without a key the action uses the anonymous tier: 100 API requests per day per IP and 5 products per batch call, which is meant for evaluation and small repositories. Pipelines that scan many repositories, run on every push or check large SBOMs hit both caps. A Starter key ($79/month) gives 10,000 requests a day and 25 per call; a Pro key ($199/month) removes the daily cap and takes 50 per call. Keys are issued at checkout and the action reads them from the `api-key` input (store the key as the `EOL_API_KEY` repository secret).
 
-[Get a Pro API key →](https://endoflife.ai/api)
+[Get an API key →](https://endoflife.ai/api?utm_source=eol_check#get-key)
 
 ---
 
