@@ -12,7 +12,7 @@
 
 **Catch end-of-life runtimes in CI before they become a security incident.**
 
-Powered by [endoflife.ai](https://endoflife.ai) — EOL intelligence for Node.js, Python, PHP, Ruby, Go, and 500+ products. Free to evaluate; production keys from $79/month.
+Powered by [endoflife.ai](https://endoflife.ai) — EOL intelligence for Node.js, Python, PHP, Ruby, Go, and 500+ products. Free to evaluate; production keys from $89/month.
 
 ---
 
@@ -137,7 +137,7 @@ Every run writes a full summary table to the GitHub Actions job summary, includi
 
 ## API & rate limits
 
-Without a key the action uses the anonymous tier: 100 API requests per day per IP and 5 products per batch call, which is meant for evaluation and small repositories. Pipelines that scan many repositories, run on every push or check large SBOMs hit both caps. A Starter key ($79/month) gives 10,000 requests a day and 25 per call; a Pro key ($199/month) removes the daily cap and takes 50 per call. Keys are issued at checkout and the action reads them from the `api-key` input (store the key as the `EOL_API_KEY` repository secret).
+Without a key the action uses the anonymous tier: 50 API requests per day per IP and 3 products per batch call, which is meant for evaluation and small repositories. Pipelines that scan many repositories, run on every push or check large SBOMs hit both caps. A Starter key ($89/month) gives 10,000 requests a day and 25 per call; a Pro key ($199/month) removes the daily cap and takes 50 per call. Keys are issued at checkout and the action reads them from the `api-key` input (store the key as the `EOL_API_KEY` repository secret).
 
 [Get an API key →](https://endoflife.ai/api?utm_source=eol_check#get-key)
 
