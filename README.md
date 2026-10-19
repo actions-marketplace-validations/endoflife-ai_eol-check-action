@@ -2,7 +2,7 @@
 
 > **⚠️ Superseded:** this action has been replaced by [**endoflife-ai/eol-check**](https://github.com/endoflife-ai/eol-check) — zero-dependency, broader detection (Dockerfiles, go.mod, engines), EOL Risk Scores in annotations, and an actively maintained listing on the [GitHub Marketplace](https://github.com/marketplace/actions/eol-check-end-of-life-software-gate).
 >
-> Existing workflows using `endoflife-ai/eol-check-action@v1` keep working, but new users should adopt:
+> Existing workflows using `endoflife-ai/eol-check-action@v1` keep working without a key only until November 16, 2026, when the endoflife.ai API starts requiring one: add an `api-key` (a free key works) or move to eol-check, which needs no key:
 > ```yaml
 > - uses: endoflife-ai/eol-check@v1
 > ```
@@ -12,7 +12,7 @@
 
 **Catch end-of-life runtimes in CI before they become a security incident.**
 
-Powered by [endoflife.ai](https://endoflife.ai) — EOL intelligence for Node.js, Python, PHP, Ruby, Go, and 500+ products. Free to evaluate; production keys from $89/month.
+Powered by [endoflife.ai](https://endoflife.ai) — EOL intelligence for Node.js, Python, PHP, Ruby, Go, and 600+ products. Free key for evaluation and small use; production keys from $89/month.
 
 ---
 
@@ -120,7 +120,7 @@ jobs:
     warning-days: 180
 ```
 
-**Use a Starter or Pro API key for higher limits:**
+**Use an API key (free, Starter or Pro; required from November 16, 2026):**
 ```yaml
 - uses: endoflife-ai/eol-check-action@v1
   with:
@@ -137,9 +137,9 @@ Every run writes a full summary table to the GitHub Actions job summary, includi
 
 ## API & rate limits
 
-Without a key the action uses the anonymous tier: 50 API requests per day per IP and 3 products per batch call, which is meant for evaluation and small repositories. Pipelines that scan many repositories, run on every push or check large SBOMs hit both caps. A Starter key ($89/month) gives 10,000 requests a day and 25 per call; a Pro key ($199/month) removes the daily cap and takes 50 per call. Keys are issued at checkout and the action reads them from the `api-key` input (store the key as the `EOL_API_KEY` repository secret).
+Without a key the action uses the anonymous tier until November 16, 2026 (50 API requests per day per IP, 3 products per batch call); from then the API answers 401 without a key. A free key (150 requests a day, 5 per call, no expiry) is emailed at once from https://endoflife.ai/api#free-key. Pipelines that scan many repositories, run on every push or check large SBOMs hit both caps. A Starter key ($89/month) gives 10,000 requests a day and 25 per call; a Pro key ($199/month) removes the daily cap and takes 50 per call. Keys are issued at checkout and the action reads them from the `api-key` input (store the key as the `EOL_API_KEY` repository secret).
 
-[Get an API key →](https://endoflife.ai/api?utm_source=eol_check#get-key)
+[Get a free key →](https://endoflife.ai/api?utm_source=eol_check#free-key) · [Paid keys →](https://endoflife.ai/api?utm_source=eol_check#get-key)
 
 ---
 
